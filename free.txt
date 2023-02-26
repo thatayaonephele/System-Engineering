@@ -2,8 +2,19 @@
 current_user=$(whoami)
 Linux_machine_o_s=$(uname -asnrvmpio)
 free_and_used_space=$(free -lghtw)
-printf "The username of the current user in the Terminal: ${current_user}\n"
-echo "Current user:" $current_user 
+CRP=$(ps -eh)
+ip_address= $(sudo ip addr show)
+host_name=$(hostname -I)
+if_config=$(ifconfig)
+ip_link=$(ip link show)
+disk_usage=$(du -hc)
+
 echo "Free and used space/memory in the system: "$free_and_used_space
-echo "line to be deleted"
 echo "System info about Linux OS:" ${Linux_machine_o_s}
+printf "The username of the current user in the Terminal: %s\n" "${current_user}"
+printf "List current running processes:%s\n"  "${CRP}"
+printf "Internal System IP address: %s\n" "${host_name}"
+printf "Alternative way to get IP: %s\n" "${if_config}"
+printf "Another way to access IP: %s\n" "${ip_address}"
+printf " link-layer information of all available devices (which have a driver loaded): %s\n" "${ip_link}"
+printf "System Disk Usage/file size totals: %s\n" "${disk_usage}"
