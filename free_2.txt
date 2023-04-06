@@ -1,0 +1,6 @@
+#!/bin/bash
+current_user=$(whoami)
+free_and_used_space=$(free -lghtw)
+printf "The username of the current user in the Terminal: ${current_user}\n"
+echo "Current user:" $current_user 
+echo "Free and used space: "$free_and_used_space

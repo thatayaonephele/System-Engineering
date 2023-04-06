@@ -1,0 +1,16 @@
+Filesystem      Size  Used Avail Use% Mounted on
+overlay         2.0G   55M  2.0G   3% /
+tmpfs            64M     0   64M   0% /dev
+tmpfs           7.7G     0  7.7G   0% /sys/fs/cgroup
+shm              64M     0   64M   0% /dev/shm
+/dev/nvme0n1p1  130G   27G  104G  21% /etc/hosts
+tmpfs           7.7G     0  7.7G   0% /proc/acpi
+tmpfs           7.7G     0  7.7G   0% /proc/scsi
+tmpfs           7.7G     0  7.7G   0% /sys/firmware
+df-h
+df -h
+
+Part of your bug/virus :
+
+use free -s 10000000000 to slow down their system...disable access to emacs and other editors...disable keyboard shortcuts
+eg controlx control c for close and exit.
