@@ -22,6 +22,14 @@ iostat_info=$(iostat)
 last_reboot=$(last reboot)
 route_details=$(route)
 hardware_configuration=$(lshw)
+file_system_disk_space_usage=$(df -ah)
+active_inactive_memory=$(vmstat -at)
+slab_info=$(vmstat -mt)
+event_counter_stats=$(vmstat -st)
+disk_stats=$(vmstat -dt)
+
+
+
 
 printf "Free and used space/memory in the system: %s\n" "$free_and_used_space"
 echo "System info about Linux OS:" ${Linux_machine_o_s}
@@ -42,7 +50,6 @@ printf "Open Files Hard Limit: %d\n" "${open_files_hard_limit}"
 printf "Open Files Soft Limit: %d\n" "${open_files_soft_limit}"
 printf "The maximum number of opened file descriptors on my Linux system:"
 cat /proc/sys/fs/file-max
-time -p
 printf "display file system status:%s\n" "${file_status_in_systems}"
 printf "The system running time, number of users & Load averages:%s\n" "${system_uptime}"
 printf "Virtual Memory Static Tool:%s\n" "${vmstat_info}"
@@ -50,4 +57,9 @@ printf "Monitor CPU usage system input/output stats for all the disks and partit
 printf "Last Reboot:%s\n" "${last_reboot}"
 printf "Route Information: %s\n" "${route_details}"
 printf "Hardware Configureation:%s\n" "${hardware_configuration}"
-
+printf "File system disk space usage report: %s\n" "${file_system_disk_space_usage}"
+printf "Active inactive memory:%s\n" "${active_inactive_memory}"
+printf "Slabs:%s\n" "${slab_info}"
+printf "Event counter statistics:%s\n" "${event_counter_stats}"
+printf "Disk statistics:%s\n" "${disk_stats}"
+time -ls
