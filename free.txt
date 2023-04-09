@@ -19,6 +19,9 @@ file_status_in_systems=$(stat * /)
 system_uptime=$(uptime)
 vmstat_info=$(vmstat)
 iostat_info=$(iostat)
+last_reboot=$(last reboot)
+route_details=$(route)
+hardware_configuration=$(lshw)
 
 printf "Free and used space/memory in the system: %s\n" "$free_and_used_space"
 echo "System info about Linux OS:" ${Linux_machine_o_s}
@@ -44,3 +47,7 @@ printf "display file system status:%s\n" "${file_status_in_systems}"
 printf "The system running time, number of users & Load averages:%s\n" "${system_uptime}"
 printf "Virtual Memory Static Tool:%s\n" "${vmstat_info}"
 printf "Monitor CPU usage system input/output stats for all the disks and partitions: %s\n" "${iostat_info}"
+printf "Last Reboot:%s\n" "${last_reboot}"
+printf "Route Information: %s\n" "${route_details}"
+printf "Hardware Configureation:%s\n" "${hardware_configuration}"
+
