@@ -1,8 +1,7 @@
 #!/bin/bash
-current_user=$(whoami)
-Linux_machine_o_s=$(uname -asnrvmpio)
+current_user=$(whoami) Linux_machine_o_s=$(uname -asnrvmpio)
 free_and_used_space=$(free -lghtw)
-CRP=$(ps -eh)
+CRP=$(ps -eAofhMaxZ  --forest)
 #ip_address= $(sudo ip addr show)
 host_name=$(hostname -I)
 ip_link=$(ip link show)
@@ -27,9 +26,9 @@ active_inactive_memory=$(vmstat -at)
 slab_info=$(vmstat -mt)
 event_counter_stats=$(vmstat -st)
 disk_stats=$(vmstat -dt)
-
-
-
+who_cmd=$(who -all)
+last_cmd=$(last -adiFxw)
+list_cpu=$(lscpu)
 
 printf "Free and used space/memory in the system: %s\n" "$free_and_used_space"
 echo "System info about Linux OS:" ${Linux_machine_o_s}
@@ -49,9 +48,8 @@ printf "Execution Time:"
 printf "Open Files Hard Limit: %d\n" "${open_files_hard_limit}"
 printf "Open Files Soft Limit: %d\n" "${open_files_soft_limit}"
 printf "The maximum number of opened file descriptors on my Linux system:"
-cat /proc/sys/fs/file-max
 printf "display file system status:%s\n" "${file_status_in_systems}"
-printf "The system running time, number of users & Load averages:%s\n" "${system_uptime}"
+printf "Sys running time[hours:mins:sec] number of users & Load avgs[1, 5 & 15 min]:%s\n" "${system_uptime}"
 printf "Virtual Memory Static Tool:%s\n" "${vmstat_info}"
 printf "Monitor CPU usage system input/output stats for all the disks and partitions: %s\n" "${iostat_info}"
 printf "Last Reboot:%s\n" "${last_reboot}"
@@ -62,4 +60,6 @@ printf "Active inactive memory:%s\n" "${active_inactive_memory}"
 printf "Slabs:%s\n" "${slab_info}"
 printf "Event counter statistics:%s\n" "${event_counter_stats}"
 printf "Disk statistics:%s\n" "${disk_stats}"
-time -ls
+printf " user name, date, time, host information:%s\n" "${who_cmd}"
+printf  "Listing of last logged in users[terminal, time, date, sys reboot,boot & kernel]: %s\n" "${last_cmd}"
+printf "Dislpay info about CPU architecture: %s\n" "${list_cpu}"

@@ -13,13 +13,23 @@ pid=$(pidof -cx -d "," bash)
 user_activity_and_info=$(w)
 default_eject_device=$( eject -d)
 mounted_files=$(mount -l)
-#monitor_dashboard_terminal=$(gtop) I think THE ISSUE Is I might have to redownlaod gtop
 open_files_hard_limit=$(ulimit -Hn)
 open_files_soft_limit=$(ulimit -Sn)
 file_status_in_systems=$(stat * /)
 system_uptime=$(uptime)
 vmstat_info=$(vmstat)
 iostat_info=$(iostat)
+last_reboot=$(last reboot)
+route_details=$(route)
+hardware_configuration=$(lshw)
+file_system_disk_space_usage=$(df -ah)
+active_inactive_memory=$(vmstat -at)
+slab_info=$(vmstat -mt)
+event_counter_stats=$(vmstat -st)
+disk_stats=$(vmstat -dt)
+who_cmd=$(who -all)
+w_cmd=$(w)
+
 
 printf "Free and used space/memory in the system: %s\n" "$free_and_used_space"
 echo "System info about Linux OS:" ${Linux_machine_o_s}
@@ -36,13 +46,20 @@ printf "User Details and Activity: %s\n" "${user_activity_and_info}"
 printf "Default Eject Device: %s\n" "${default_eject_device}"
 printf "Mounted files in my system: %s\n" "${mounted_files}"
 printf "Execution Time:"
-#printf "System_monitoring_dashboard_for_terminal:%s\n" "${system_monitoring_dashboard_for_terminal}"
 printf "Open Files Hard Limit: %d\n" "${open_files_hard_limit}"
 printf "Open Files Soft Limit: %d\n" "${open_files_soft_limit}"
 printf "The maximum number of opened file descriptors on my Linux system:"
-cat /proc/sys/fs/file-max
-time -p
 printf "display file system status:%s\n" "${file_status_in_systems}"
-printf "The system running time, number of users & Load averages:%s\n" "${system_uptime}"
+printf "Sys running time[hours:mins:sec] number of users & Load avgs[1, 5 & 15 min]:%s\n" "${system_uptime}"
 printf "Virtual Memory Static Tool:%s\n" "${vmstat_info}"
-printf "Monitor CPU utilization, system input/output statistics for all the disks and partitions: %s\n" "${iostat_info}"
+printf "Monitor CPU usage system input/output stats for all the disks and partitions: %s\n" "${iostat_info}"
+printf "Last Reboot:%s\n" "${last_reboot}"
+printf "Route Information: %s\n" "${route_details}"
+printf "Hardware Configureation:%s\n" "${hardware_configuration}"
+printf "File system disk space usage report: %s\n" "${file_system_disk_space_usage}"
+printf "Active inactive memory:%s\n" "${active_inactive_memory}"
+printf "Slabs:%s\n" "${slab_info}"
+printf "Event counter statistics:%s\n" "${event_counter_stats}"
+printf "Disk statistics:%s\n" "${disk_stats}"
+printf " user name, date, time, host information:%s\n" "${who_cmd}"
+printf "Current User Activity:%s\n" "${w_cmd}"
